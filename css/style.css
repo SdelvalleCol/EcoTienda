@@ -1,0 +1,41 @@
+.navs {
+    margin: 0%;
+    width: 100%;
+    padding: 1%;
+}
+
+.icon_search {
+    color: #83e447;
+    float: right;
+    margin-right: 2.5%;
+}
+
+.busqueda {
+    font-family: 'Work Sans';
+    border-radius: 30px;
+    border-color: #83e447;
+    border-style: solid;
+    border-width: thin;
+    width: 65%;
+    padding: 1%;
+    padding-left: 2%;
+    color: rgb(170, 167, 167);
+    font-size: 110%;
+}
+
+.iconnav {
+    color: rgb(170, 167, 167);
+    float: right;
+    padding-top: 0.5%;
+    width: 11%;
+    color: #83e447;
+    text-align: center;
+}
+
+.pnav {
+    color: rgb(170, 167, 167);
+    font-family: 'Work Sans';
+    font-size: thin;
+    text-align: center;
+    line-height: 100%;
+}
