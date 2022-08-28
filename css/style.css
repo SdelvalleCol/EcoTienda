@@ -1,7 +1,49 @@
+/* Modales */
+
+.modales{
+    display: block;
+}
+
+.titulo_modal{
+    color: #83e447;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.boton_modal{
+    border-radius: 30px;
+    background-color: #83e447;
+    color: white;
+    border-style: none;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    padding: 2%;
+    font-weight: bold;
+
+}
+
+hr{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+}
+
+/* NAVBAR */
+
 .navs {
     margin: 0%;
-    width: 100%;
+    width: 85%;
     padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input_nav{
+    border-style: none;
+    width: 50%;
 }
 
 .icon_search {
@@ -16,7 +58,7 @@
     border-color: #83e447;
     border-style: solid;
     border-width: thin;
-    width: 65%;
+    width: 60%;
     padding: 1%;
     padding-left: 2%;
     color: rgb(170, 167, 167);
@@ -27,9 +69,11 @@
     color: rgb(170, 167, 167);
     float: right;
     padding-top: 0.5%;
-    width: 11%;
+    width: 10%;
     color: #83e447;
     text-align: center;
+    margin-right: 7%;
+    margin-left: -7%;
 }
 
 .pnav {
@@ -38,4 +82,92 @@
     font-size: thin;
     text-align: center;
     line-height: 100%;
+}
+
+
+/* CARDS */
+
+.contenedor{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carta{
+    display: inline-block;
+    width: 20%;
+    margin-right: 4.5%;
+    border-style: none;
+}
+
+.imagen{
+    margin-bottom: -10%; 
+}
+
+.texto_titulo{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.complemento{
+    color: rgb(170, 167, 167);
+    margin: 0.3%;
+    text-align: center;
+    line-height: 200%;
+    font-family: 'Work Sans';
+    font-size: large;
+    margin-top: -5%;
+}
+
+.complemento_money{
+    color: #5ccb5f;
+    font-size: x-large;
+    text-align: center;
+}
+
+.boton{
+    display: none;
+    background-color: #efa229;
+    width: 70%;
+    height: 4vh;
+    border-radius: 30px;
+    border-style: none;
+    margin-bottom: 10%;
+    margin-left: 15%;
+    margin-top: -3%;
+    color: white;
+}
+
+.corazon{
+    display: none;
+    position: relative;
+    float: right;
+    margin-right: 10%;
+    margin-top: 20%;
+    margin-bottom: -100%;
+
+}
+
+
+.carta:hover{
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    position: relative;
+  }
+
+.carta:hover > .corazon{
+    display: block;
+  }
+
+.carta:hover > .boton{
+    display: block;
+  }
+
+.paginacion{
+    text-align: center;
+    width: 85%;
+    margin-top: 5%;
+    margin-left: 38%;
+    margin-bottom: 5%;
 }
