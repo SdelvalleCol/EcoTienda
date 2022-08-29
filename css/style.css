@@ -1,16 +1,16 @@
 /* Modales */
 
-.modales{
-    display: block;
+.modales {
+    display: none;
 }
 
-.titulo_modal{
+.titulo_modal {
     color: #83e447;
     font-family: sans-serif;
     font-weight: bold;
 }
 
-.boton_modal{
+.boton_modal {
     border-radius: 30px;
     background-color: #83e447;
     color: white;
@@ -21,29 +21,35 @@
     margin-bottom: 2%;
     padding: 2%;
     font-weight: bold;
-
 }
 
-hr{
+hr {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     color: black;
 }
 
+
 /* NAVBAR */
 
 .navs {
     margin: 0%;
-    width: 85%;
+    width: 90%;
     padding: 1%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.input_nav{
+.logo {
+    width: 10%;
+    height: 10%;
+    border-radius: 20px;
+}
+
+.input_nav {
     border-style: none;
-    width: 50%;
+    width: 80%;
 }
 
 .icon_search {
@@ -58,11 +64,13 @@ hr{
     border-color: #83e447;
     border-style: solid;
     border-width: thin;
-    width: 60%;
+    width: 55%;
     padding: 1%;
     padding-left: 2%;
     color: rgb(170, 167, 167);
     font-size: 110%;
+    display: inline-block;
+    margin-left: 1.5%;
 }
 
 .iconnav {
@@ -72,8 +80,8 @@ hr{
     width: 10%;
     color: #83e447;
     text-align: center;
-    margin-right: 7%;
-    margin-left: -7%;
+    margin-right: 3%;
+    margin-left: -3%;
 }
 
 .pnav {
@@ -84,34 +92,73 @@ hr{
     line-height: 100%;
 }
 
+.hr_style {
+    width: 100%;
+    color: rgb(180, 180, 180);
+}
+
+
+/* Busqueda */
+
+.precio {
+    float: left;
+    background-color: white;
+    height: 180vh;
+    width: 15%;
+    margin-left: 2%;
+    margin-right: 1.5%;
+    margin-top: 1%;
+    padding: 2%;
+}
+
+.boton_precio {
+    border-radius: 30px;
+    background-color: #5ccb5f;
+    color: white;
+    text-align: center;
+    border-style: none;
+    width: 90%;
+    height: 5vh;
+    margin-left: 5%;
+}
+
+.input_range {
+    border-width: thin;
+    width: 40%;
+    margin-bottom: 10%;
+    margin-left: 5.5%;
+    text-align: center;
+}
+
 
 /* CARDS */
 
-.contenedor{
+.contenedor {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    display: inline-block;
 }
 
-.carta{
+.carta {
     display: inline-block;
     width: 20%;
-    margin-right: 4.5%;
+    margin-right: 4%;
     border-style: none;
 }
 
-.imagen{
-    margin-bottom: -10%; 
+.imagen {
+    margin-bottom: -10%;
 }
 
-.texto_titulo{
+.texto_titulo {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-.complemento{
+.complemento {
     color: rgb(170, 167, 167);
     margin: 0.3%;
     text-align: center;
@@ -121,13 +168,13 @@ hr{
     margin-top: -5%;
 }
 
-.complemento_money{
+.complemento_money {
     color: #5ccb5f;
     font-size: x-large;
     text-align: center;
 }
 
-.boton{
+.boton {
     display: none;
     background-color: #efa229;
     width: 70%;
@@ -140,31 +187,29 @@ hr{
     color: white;
 }
 
-.corazon{
+.corazon {
     display: none;
     position: relative;
     float: right;
     margin-right: 10%;
     margin-top: 20%;
     margin-bottom: -100%;
-
 }
 
-
-.carta:hover{
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+.carta:hover {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
     position: relative;
-  }
+}
 
-.carta:hover > .corazon{
+.carta:hover>.corazon {
     display: block;
-  }
+}
 
-.carta:hover > .boton{
+.carta:hover>.boton {
     display: block;
-  }
+}
 
-.paginacion{
+.paginacion {
     text-align: center;
     width: 85%;
     margin-top: 5%;
