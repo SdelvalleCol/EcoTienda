@@ -178,7 +178,7 @@ hr {
     display: none;
     background-color: #efa229;
     width: 70%;
-    height: 4vh;
+    height: 5vh;
     border-radius: 30px;
     border-style: none;
     margin-bottom: 10%;
@@ -207,6 +207,11 @@ hr {
 
 .carta:hover>.boton {
     display: block;
+}
+
+.boton:hover {
+    background-color: #5ccb5f;
+    color: black;
 }
 
 .paginacion {

@@ -1,11 +1,12 @@
-class producto {
-    constructor(id, nombre, detalle, precio, precio_oferta, descripcion) {
+export class producto {
+    constructor(id, nombre, detalle, precio, precio_oferta, descripcion, imagen) {
         this.id = id
         this.nombre = nombre
         this.detalle = detalle
         this.precio = precio
         this.precio_oferta = precio_oferta
         this.descripcion = descripcion
+        this.imagen = imagen
     }
 
     issale() {
@@ -16,5 +17,3 @@ class producto {
         }
     }
 }
-
-export { producto }
