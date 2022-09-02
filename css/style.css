@@ -1,6 +1,6 @@
 /* Modal */
 .modal_div {
-    display: flex;
+    display: none;
     position: fixed;
     z-index: 1;
     padding-top: 100px;
@@ -15,20 +15,113 @@
 
 .modal-content {
     left: 25%;
-    top: 25%;
-    overflow-y: hidden;
-    display: flex;
+    top: 10%;
+    display: none;
     position: fixed;
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
     border: 1px solid #888;
     width: 50%;
-    height: 50vh;
+    height: auto;
     z-index: 2;
+    padding: 1%;
   }
 
-  
+.img_modal{
+    margin: 5%;
+    width: 100%;
+}
+
+.titulo_nav_modal{
+    width: 100%;
+    margin-top: 2%;
+}
+
+.titulo_texto_modal{
+    font-size: 150%;
+    font-family: 'Work Sans';
+    width: 70%;
+    height: auto;
+    word-wrap: break-word;
+    line-height: 100%; 
+    display: inline-block;
+}
+
+.corazon_modal{
+    float: right;
+    height: 2.5vh;
+    width: 30%;
+    margin-top: 1%;   
+}
+
+.cerrar_modal{
+    float: right;
+    border-style: none;
+    margin-top: -5%;
+    margin-right: -5%;
+    background-color: white;
+}
+
+.detalles_modal{
+    height: auto;
+    width: 25%;
+}
+
+.detalle_modal_und{
+    color: #ddd;
+    font-size: 100%;
+    font-family: 'Work Sans';
+    width: 100%;
+    word-wrap: break-word;
+    font-weight: bold;
+    line-height: 100%;
+}
+
+.precio_modal_und{
+    color:  #83e447;
+    font-size: 150%;
+    font-family: 'Work Sans';
+    width: 100%;
+    word-wrap: break-word;
+    font-weight: bold;
+    margin-top:-5%;
+    line-height: 100%;
+}
+
+.oferta{
+    color: gray;
+    font-size: 75%;
+    font-family: 'Work Sans';
+    width: 100%;
+    word-wrap: break-word;
+    font-weight:lighter;
+    margin-top: -5%;
+    line-height: 100%;
+}
+
+.texto_modal_contenido{
+    color: gray;
+    line-height: 120%;
+    font-family: 'Work Sans';
+    width: 90%;
+    text-align: justify;
+    margin-top: 5%;
+    word-wrap: break-word;
+    margin-bottom: 5%;
+}
+
+.boton_modal{
+    font-family: 'Work Sans';
+    padding: 1.5%;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    text-align: center;
+    width: 40%;
+    background-color: #efa229;
+    margin-left: 35%;
+
+}
 
 
 /* NAVBAR */

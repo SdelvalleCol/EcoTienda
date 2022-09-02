@@ -176,6 +176,12 @@ document.getElementById("filtro_string").addEventListener("click", (e) => {
 
 //MODALES
 
+//MODAL_PRODUCTO
+//DISPLAY FLEX
+document.getElementById("cerrar_modal").addEventListener("click",(e)=>{
+    document.getElementById("p_negra").style.display = "none";
+    document.getElementById("modal_producto").style.display = "none";
+})
 
 //EJECUCIÓN
 main()
