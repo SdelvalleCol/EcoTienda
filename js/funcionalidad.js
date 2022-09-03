@@ -62,7 +62,7 @@ function main() {
                 <p class="complemento">${data_principal[i].detalle}</p>
                 <p class="complemento_money">$${data_principal[i].precio}</p>
             </div>
-            <button class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+            <button id="carrito" class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-basket3-fill" viewBox="0 0 16 16">
                         <path
@@ -85,7 +85,7 @@ function main() {
                 <p class="complemento">${data_principal[i].detalle}</p>
                 <p class="complemento_money">$${data_principal[i].precio}</p>
             </div>
-            <button class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+            <button id="carrito" class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-basket3-fill" viewBox="0 0 16 16">
                         <path
@@ -125,7 +125,7 @@ document.getElementById("xd").addEventListener("click", (e) => {
                     <p class="complemento">${data_principal[i].detalle}</p>
                     <p class="complemento_money">$${data_principal[i].precio}</p>
                 </div>
-                <button class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+                <button id="carrito" class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
                             xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-basket3-fill" viewBox="0 0 16 16">
                             <path
@@ -159,7 +159,7 @@ document.getElementById("filtro_string").addEventListener("click", (e) => {
                 <p class="complemento">${data_principal[i].detalle}</p>
                 <p class="complemento_money">$${data_principal[i].precio}</p>
             </div>
-            <button class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+            <button id="carrito" class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-basket3-fill" viewBox="0 0 16 16">
                         <path
@@ -172,15 +172,6 @@ document.getElementById("filtro_string").addEventListener("click", (e) => {
     } else {
         alert("Digite algo")
     }
-})
-
-//MODALES
-
-//MODAL_PRODUCTO
-//DISPLAY FLEX
-document.getElementById("cerrar_modal").addEventListener("click",(e)=>{
-    document.getElementById("p_negra").style.display = "none";
-    document.getElementById("modal_producto").style.display = "none";
 })
 
 //EJECUCIÓN
