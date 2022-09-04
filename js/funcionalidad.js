@@ -302,3 +302,12 @@ function xds(x) {
     document.getElementById("p_negra").style.display = "flex";
     document.getElementById("modal_producto").style.display = "flex";
 }
+
+//Modal_Cuenta
+document.getElementById("btn_abrir_cta").addEventListener("click", (e) => {
+    if (document.getElementById("cuenta_modal_acc").style.display == "flex") {
+        document.getElementById("cuenta_modal_acc").style.display = "none"
+    } else {
+        document.getElementById("cuenta_modal_acc").style.display = "flex"
+    }
+})

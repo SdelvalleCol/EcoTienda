@@ -1,5 +1,8 @@
 /* Modal */
 
+
+/* Modal_Producto */
+
 .modal_div {
     display: none;
     position: fixed;
@@ -123,6 +126,31 @@
 }
 
 
+/* Modal_cuenta */
+
+.modal-content-cuenta {
+    left: 72.5%;
+    top: 10%;
+    display: flex;
+    position: fixed;
+    background-color: #fefefe;
+    margin: auto;
+    width: 15%;
+    z-index: 2;
+    padding: 1%;
+    border-style: none;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.modal_contenido_div {
+    font-family: sans-serif;
+    background-color: white;
+    margin: 1%;
+    border-style: none;
+    padding: 1%;
+}
+
+
 /* NAVBAR */
 
 hr {
@@ -197,7 +225,6 @@ hr {
 .hr_style {
     width: 100%;
     color: rgb(180, 180, 180);
-    margin-top: -0.5%;
 }
 
 
