@@ -1,4 +1,22 @@
-import { producto } from "./clase.js";
+class producto {
+    constructor(id, nombre, detalle, precio, precio_oferta, descripcion, imagen) {
+        this.id = id
+        this.nombre = nombre
+        this.detalle = detalle
+        this.precio = precio
+        this.precio_oferta = precio_oferta
+        this.descripcion = descripcion
+        this.imagen = imagen
+    }
+
+    issale() {
+        if (this.precio_oferta == 0) {
+            return "No tiene oferta"
+        } else {
+            return this.precio_oferta
+        }
+    }
+}
 var data_principal = []
 var data_favorito = []
 var p1 = new producto(1, "Aceite esencial de Clavo", "12ML", 8, 665, "El aceite esencial de clavo es conocido por sus increíbles propiedades antimicrobianas, antimicóticas, antisépticas, antivirales, afrodisíacas y estimulantes. Perfecto para utilizar en tus mezclas de Cosmética Natural, añadiendo unas cuantas gotas en tu crema corporal o aceite vegetal, conseguirás nutrir y lucir una piel radiante y 100% cuidado.", "../img/1.jpg")
@@ -13,7 +31,7 @@ var p9 = new producto(9, "Aceite corporal blanco siberiano anticelulítico de Na
 var p10 = new producto(10, "Aceite corporal Body Sculptor", "", 73.70, 491, "Aceite corporal que moldea el cuerpo y esculpe la silueta de forma natural y eficaz. Previene el exceso de peso y la retención de líquidos gracias a su acción drenante, activa la microcirculación a la vez que tonifica la piel. Esculpe tu cuerpo realizando tratamientos de forma diaria. Está formulado con aceites vegetales naturales adecuado para pieles sensibles.", "../img/10.jpg")
 var p11 = new producto(11, "Aceite corporal de almendras dulces", "500ML", 10.45, 20.90, "El Aceite de Almendras dulces es básico para una hidratación y nutrición de la piel. Puedes utilizarlo en todas las partes de tu cuerpo preferiblemente después de la ducha con la piel húmeda, para ayudar a su absorción llegando a las capas profundas de la piel. Un aceite neutro apto para todo tipo de pieles y edades, utilizándose para toda la familia desde las edades más tempranas. Es ideal como base para formularlo con otros aceites, aceites esenciales y lociones. ", "../img/11.jpg")
 var p12 = new producto(12, "Aceite corporal de almendras dulces con dosificador 1L", "1000ML", 14.99, 0, "El Aceite de Almendras dulces es básico para una hidratación y nutrición de la piel. Puedes utilizarlo en todas las partes de tu cuerpo preferiblemente después de la ducha con la piel húmeda, para ayudar a su absorción llegando a las capas profundas de la piel. Un aceite neutro apto para todo tipo de pieles y edades, utilizándose para toda la familia desde las edades más tempranas. Es ideal como base para formularlo con otros aceites, aceites esenciales y lociones.", "../img/12.jpg")
-var p13 = new producto(1, "Aceite esencial de Clavo", "12ML", 8, 665, "El aceite esencial de clavo es conocido por sus increíbles propiedades antimicrobianas, antimicóticas, antisépticas, antivirales, afrodisíacas y estimulantes. Perfecto para utilizar en tus mezclas de Cosmética Natural, añadiendo unas cuantas gotas en tu crema corporal o aceite vegetal, conseguirás nutrir y lucir una piel radiante y 100% cuidado.", "../img/1.jpg")
+var p13 = new producto(13, "Aceite esencial de Clavo", "12ML", 8, 665, "El aceite esencial de clavo es conocido por sus increíbles propiedades antimicrobianas, antimicóticas, antisépticas, antivirales, afrodisíacas y estimulantes. Perfecto para utilizar en tus mezclas de Cosmética Natural, añadiendo unas cuantas gotas en tu crema corporal o aceite vegetal, conseguirás nutrir y lucir una piel radiante y 100% cuidado.", "../img/1.jpg")
 data_principal.push(p1)
 data_principal.push(p2)
 data_principal.push(p3)
@@ -62,7 +80,7 @@ function main() {
                 <p class="complemento">${data_principal[i].detalle}</p>
                 <p class="complemento_money">$${data_principal[i].precio}</p>
             </div>
-            <button id="carrito" class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+            <button  onclick="xds(${data_principal[i].id})" class="boton" ><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-basket3-fill" viewBox="0 0 16 16">
                         <path
@@ -85,7 +103,7 @@ function main() {
                 <p class="complemento">${data_principal[i].detalle}</p>
                 <p class="complemento_money">$${data_principal[i].precio}</p>
             </div>
-            <button id="carrito" class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+            <button class="boton" onclick="xds(${data_principal[i].id})" ><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-basket3-fill" viewBox="0 0 16 16">
                         <path
@@ -125,7 +143,7 @@ document.getElementById("xd").addEventListener("click", (e) => {
                     <p class="complemento">${data_principal[i].detalle}</p>
                     <p class="complemento_money">$${data_principal[i].precio}</p>
                 </div>
-                <button id="carrito" class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+                <button  onclick="xds(${data_principal[i].id})" class="boton" ><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
                             xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-basket3-fill" viewBox="0 0 16 16">
                             <path
@@ -159,7 +177,7 @@ document.getElementById("filtro_string").addEventListener("click", (e) => {
                 <p class="complemento">${data_principal[i].detalle}</p>
                 <p class="complemento_money">$${data_principal[i].precio}</p>
             </div>
-            <button id="carrito" class="boton"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+            <button  onclick="xds(${data_principal[i].id})" class="boton" ><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-basket3-fill" viewBox="0 0 16 16">
                         <path
@@ -169,10 +187,118 @@ document.getElementById("filtro_string").addEventListener("click", (e) => {
                 contenedor.innerHTML += plantilla
             }
         }
+        document.getElementById("busqueda_str").value = ""
     } else {
         alert("Digite algo")
     }
 })
 
+//Filtrar_precio
+document.getElementById("filtrar_precio_bus").addEventListener("click", (e) => {
+    var min = document.getElementById("precio_min").value
+    var max = document.getElementById("precio_maximo").value
+    if (min != "" && max != "") {
+        if (max > min) {
+            var contador = false
+            min = parseFloat(min)
+            max = parseFloat(max)
+            var contenedor = document.getElementById("contenedor")
+            var back = contenedor.innerHTML
+            contenedor.innerHTML = ""
+            for (var i = 0; i < data_principal.length; i++) {
+                if ((data_principal[i].precio >= min) && (data_principal[i].precio <= max)) {
+                    contador = true
+                    var plantilla = `<div class="card carta">
+                <svg class="corazon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                <img class="card-img-top imagen" src="${data_principal[i].imagen}" alt="Card image cap">
+                <h5 class="texto_titulo">${data_principal[i].nombre}</h5>
+                <div class="card-body">
+                    <p class="complemento">${data_principal[i].detalle}</p>
+                    <p class="complemento_money">$${data_principal[i].precio}</p>
+                </div>
+                <button  onclick="xds(${data_principal[i].id})" class="boton" ><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-basket3-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.468 15.426.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z" />
+                        </svg>Añadir a la cesta</button>
+                </div>`
+                    contenedor.innerHTML += plantilla
+                }
+            }
+            if (contador == false) {
+                contenedor.innerHTML = back
+                alert("No se encontro ningun precio")
+            }
+        } else {
+            alert("El minimo es mayor al máximo")
+        }
+    } else {
+        alert("Debe agregar un minimo y un máximo")
+    }
+
+
+})
+
 //EJECUCIÓN
 main()
+
+//MODALES
+//MODAL_PRODUCTO
+//DISPLAY FLEX
+function cerrar_modal_xs() {
+    document.getElementById("p_negra").style.display = "none";
+    document.getElementById("modal_producto").style.display = "none";
+}
+
+function xds(x) {
+    var contendor = document.getElementById("modal_producto")
+    for (var i = 0; i < data_principal.length; i++) {
+        if (data_principal[i].id == x) {
+            var plantilla = `<div class="container">
+            <div class="row">
+                <div class="col">
+                    <img class="img_modal" src="${data_principal[i].imagen}" alt="">
+                </div>
+                <div class="col-8">
+                    <div class="titulo_nav_modal">
+                        <p class="titulo_texto_modal">${data_principal[i].nombre}</p>
+                        <button id="cerrar_modal" onclick="cerrar_modal_xs()" class="cerrar_modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                          </svg></button>
+                        <svg class="corazon_modal" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path
+                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>
+                    </div>
+
+                    <div class="detalles_modal">
+                        <p class="detalle_modal_und">${data_principal[i].detalle}</p>
+                        <p class="precio_modal_und">$${data_principal[i].precio}</p>
+                        <p class="oferta">${data_principal[i].precio_oferta}</p>
+                    </div>
+
+                    <div class="texto_modal_contenido">
+                    ${data_principal[i].descripcion}
+                    </div>
+                    
+                    <input style="width:15% ; height: 4.5vh; text-align: center;" type="number" placeholder="1"><button class="boton_modal"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-basket3-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.468 15.426.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z" />
+                    </svg>Añadir a la cesta  </button>
+
+                </div>
+            </div>
+        </div>`
+            contendor.innerHTML = plantilla
+        }
+    }
+    document.getElementById("p_negra").style.display = "flex";
+    document.getElementById("modal_producto").style.display = "flex";
+}

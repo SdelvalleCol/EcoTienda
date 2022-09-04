@@ -8,101 +8,71 @@
     <title>EcoTienda</title>
     <link rel="shortcut icon" href="../img/icon.jpg" />
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <!--MODALES-->
 
     <div id="p_negra" class="modal_div"></div>
-    <div id="modal_producto" class="modal-content">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <img class="img_modal" src="../img/2.jpg" alt="">
-                </div>
-                <div class="col-8">
-                    <div class="titulo_nav_modal">
-                        <p class="titulo_texto_modal">Parches de Oro de 24 kt Rejuvenecedores para Contorno de Ojos</p>
-                        <button id="cerrar_modal" class="cerrar_modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                          </svg></button>
-                        <svg class="corazon_modal" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>
-                    </div>
-
-                    <div class="detalles_modal">
-                        <p class="detalle_modal_und">60UDS.</p>
-                        <p class="precio_modal_und">15,50 €</p>
-                        <p class="oferta">Sale a: 0,26 €/ud.</p>
-                    </div>
-
-                    <div class="texto_modal_contenido">
-                        Parches de oro de 24 kt rejuvenecedores para contorno de ojos de Natura Siberica. Parches para
-                        ojos con efecto rejuvenecedor enriquecidos con oro de 24kt. Su acción descongestiona la piel, la
-                        suaviza y mejora su luminosidad.
-                        Estos parches con oro de 24kt son la opción perfecta para rejuvenecer la mirada en pocos
-                        minutos. Basados en activo postbiótico único y extractos fermentados de mora de los pantanos
-                        norteña y frambuesa silvestre, contienen dos activos únicos para combatir los signos de
-                        envejecimiento: el complejo de polipéptidos SYN-COLL® y oro de 24kt. Gracias a ellos, estimulan
-                        la síntesis de colágeno en las células de la piel y ayudan a suavizar las arrugas, mejorando la
-                    </div>
-                    
-                    <input style="width:15% ; height: 4.5vh; text-align: center;" type="number" placeholder="1"><button class="boton_modal"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
-                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-basket3-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.468 15.426.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z" />
-                    </svg>Añadir a la cesta  </button>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="modal_producto" class="modal-content"></div>
 
     <!--NAVBAR-->
     <nav class="navs">
-        <aside class="iconnav">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart"
-                viewBox="0 0 16 16">
-                <path
-                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </svg>
-            <p class="pnav">Mi carrito</p>
-        </aside>
-        <aside class="iconnav">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person"
-                viewBox="0 0 16 16">
-                <path
-                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-            </svg>
-            <p class="pnav">Mi cuenta</p>
-        </aside>
-        <aside class="iconnav">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
-                viewBox="0 0 16 16">
-                <path
-                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-            </svg>
-            <p class="pnav">Mis favoritos</p>
-        </aside>
-        <img src="../img/logo.jpg" alt="" class="logo">
-        <div class="busqueda"> <input id="busqueda_str" class="input_nav" type="text"
-                placeholder="¿Qué producto estás buscando...?">
-            <div class="icon_search">
-                <button id="filtro_string" class="boton_bq">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-search" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
-                </button>
+        <div class="row">
+            <div class="col-2">
+                <img src="../img/logo.jpg" alt="" class="logo">
             </div>
+
+            <div class="col-7">
+                <div class="busqueda"> <input id="busqueda_str" class="input_nav" type="text" placeholder="¿Qué producto estás buscando...?">
+                    <div class="icon_search">
+                        <button id="filtro_string" class="boton_bq">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row iconos_nav">
+
+                    <div class="col-3">
+                        <button class="botones_nav_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                              </svg>
+                        </button>
+                        <p class="texto_nav_icon">Mi favoritos</p>
+                    </div>
+                    <div class="col-3">
+                        <button class="botones_nav_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                              </svg>
+                        </button>
+                        <p class="texto_nav_icon">Mi cuenta</p>
+                    </div>
+                    <div class="col-3">
+                        <button class="botones_nav_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket3" viewBox="0 0 16 16">
+                                <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM3.394 15l-1.48-6h-.97l1.525 6.426a.75.75 0 0 0 .729.574h9.606a.75.75 0 0 0 .73-.574L15.056 9h-.972l-1.479 6h-9.21z"/>
+                              </svg>
+                        </button>
+                        <p class="texto_nav_icon">Mi carrito</p>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+
+
     </nav>
 
     <hr class="hr_style">
@@ -112,13 +82,13 @@
     <aside class="precio">
         <div>
             <h5>Precio</h5>
-            <input type="range" class="form-range" id="customRange1" min="-10" max="10">
+            <input id="precio_range_bus" type="range" class="form-range" value="0" min="0" max="10" step="1" onchange="document.getElementById('outpr').value=value">
+            <output id="outpr" for="precio_range_bus"></output>
             <hr>
             <div>
-                <input type="number" id="precio_min" class="input_range" placeholder="MIN"> <input type="number"
-                    id="precio_maximo" class="input_range" placeholder="MAX">
+                <input type="number" id="precio_min" class="input_range" placeholder="MIN" min="0"> <input type="number" id="precio_maximo" class="input_range" placeholder="MAX" min="1">
             </div>
-            <button class="boton_precio">Filtrar</button>
+            <button id="filtrar_precio_bus" class="boton_precio">Filtrar</button>
         </div>
     </aside>
 
@@ -133,17 +103,9 @@
         <ul class="pagination justify-content-center" id="contenedor_pagina" style="margin-top: 2%;">
         </ul>
     </nav>
-
-    
-    <!--Funcionalidad-->
-    <input type ="button" onclick="name_xd()">
-
     <!-- JavaScript Bundle with Popper -->
-    <script src="../js/modulo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"></script>
-    <script type="module" src="../js/funcionalidad.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="../js/funcionalidad.js"></script>
 </body>
 
 </html>
