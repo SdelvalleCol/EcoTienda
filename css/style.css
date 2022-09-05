@@ -189,6 +189,20 @@
     font-family: 'Work Sans';
 }
 
+.modal-content-fullscreen {
+    left: 25%;
+    top: 10%;
+    display: none;
+    position: fixed;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 50%;
+    height: auto;
+    z-index: 2;
+    padding: 1%;
+}
+
 
 /* NAVBAR */
 
