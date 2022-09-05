@@ -107,7 +107,7 @@ document.getElementById("xd").addEventListener("click", (e) => {
     } else if (index > 1) {
         var regla = 12
         var final = (index * regla) - regla
-        for (var i = final; i < data_principal.length; i++) {
+        for (var i = final + 1; i < (data_principal.length); i++) {
             var plantilla = `<div class="card carta">
                 <svg class="corazon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                         <path
@@ -215,8 +215,6 @@ document.getElementById("filtrar_precio_bus").addEventListener("click", (e) => {
     } else {
         alert("Debe agregar un minimo y un máximo")
     }
-
-
 })
 
 //EJECUCIÓN
