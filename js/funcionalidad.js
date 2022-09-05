@@ -19,6 +19,7 @@ class producto {
 }
 var data_principal = []
 var data_favorito = []
+var data_carrito = []
 var p1 = new producto(1, "Aceite esencial de Clavo", "12ML", 8, 665, "El aceite esencial de clavo es conocido por sus increíbles propiedades antimicrobianas, antimicóticas, antisépticas, antivirales, afrodisíacas y estimulantes. Perfecto para utilizar en tus mezclas de Cosmética Natural, añadiendo unas cuantas gotas en tu crema corporal o aceite vegetal, conseguirás nutrir y lucir una piel radiante y 100% cuidado.", "../img/1.jpg")
 var p2 = new producto(2, "Parches de Oro de 24 kt Rejuvenecedores para Contorno de Ojos", "60UDS.", 15.50, 0.26, "Parches de oro de 24 kt rejuvenecedores para contorno de ojos de Natura Siberica. Parches para ojos con efecto rejuvenecedor enriquecidos con oro de 24kt. Su acción descongestiona la piel, la suaviza y mejora su luminosidad.", "../img/2.jpg")
 var p3 = new producto(3, "Parches Iluminadores para el Contorno de Ojos", "60UDS", 15.50, 0.26, "Parches iluminadores para el contorno de ojos de Natura Siberica. 60 Parches para ojos con efecto iluminador que hidratan la piel del contorno, le devuelven la vitalidad y mejoran su protección para mantenerla joven \n Estos parches iluminadores son una solución rápida y cómoda para darle a tus ojos ese toque de luz y vitalidad que el estrés y la vida urbana les van quitando. Con su base de biome con activo postbiótico único y extractos fermentados de mora de los pantanos norteña y frambuesa silvestre ayudan al microbioma de la piel a aumentar su resistencia y mejorar su luminosidad. La vitamina C presente en su fórmula mejora el tono y la textura del contorno para ayudar a recuperar su brillo natural, y la niacinamida contribuye a fortalecer la barrera de hidratación de la epidermis, dando lugar a un resultado suave, esplendoroso y rejuvenecido.", "../img/3.jpg")
@@ -286,7 +287,7 @@ function xds(x) {
                     ${data_principal[i].descripcion}
                     </div>
                     
-                    <input style="width:15% ; height: 4.5vh; text-align: center;" type="number" placeholder="1"><button class="boton_modal"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
+                    <input style="width:15% ; height: 4.5vh; text-align: center;" type="number" placeholder="1"><button onclick="añadir(${data_principal[i].id})" class="boton_modal"><svg style=" margin-bottom: 2.5%; margin-right: 5%;"
                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-basket3-fill" viewBox="0 0 16 16">
                         <path
@@ -311,3 +312,59 @@ document.getElementById("btn_abrir_cta").addEventListener("click", (e) => {
         document.getElementById("cuenta_modal_acc").style.display = "flex"
     }
 })
+
+//Modal_Carrito
+document.getElementById("cerrar_modal_carrito").addEventListener("click", (e) => {
+    document.getElementById("carrito_compras").style.display = "none"
+    document.getElementById("p_negra").style.display = "none"
+})
+
+document.getElementById("abrir_carrito").addEventListener("click", (e) => {
+    document.getElementById("carrito_compras").style.display = "flex"
+    document.getElementById("p_negra").style.display = "flex"
+})
+
+function añadir(id) {
+    for (var i = 0; i < data_principal.length; i++) {
+        if (data_principal[i].id == id) {
+            data_carrito.push(data_principal[i])
+            var contenedor = document.getElementById("carrito_compras_cuerpo")
+            var plantilla = `<div class="row">
+            <div class="col-4">
+                <img src="${data_principal[i].imagen}" alt="" style="width: 100%;">
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-7">
+                        <h4 class="titulo_texto_modal" id="${data_principal[i].nombre}" style="width: 100%; font-size: 100%;">${data_principal[i].nombre}</h4>
+                    </div>
+                    <div class="col-4">
+                        <button class="boton_bq">
+                            <svg style="float: right;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                              </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="detalle_modal_und">${data_principal[i].detalle}</p>
+                <div class="row">
+                    <div class="col-3" style="font-family: 'Work Sans';
+                    color: rgb(131, 131, 131);">Cantidad:</div>
+                    <div class="col-4"><input type="number" min="1" class="carrito_detalle"></div>
+                    <div class="col-4 ">$${data_principal[i].precio}</div>
+                </div>
+            </div>
+        </div>
+        <hr>`
+            contenedor.innerHTML += plantilla
+            var dinero = 0
+            for (var p = 0; p < data_carrito.length; p++) {
+                dinero += parseFloat(data_carrito[p].precio)
+            }
+            document.getElementById("precio_innet_sub").innerHTML = dinero + "$"
+            document.getElementById("precio_innet_total").innerHTML = dinero + (dinero * 0.19) + "$"
+            alert("Se ha agregado el elemento " + data_principal[i].nombre + " al carrito!")
+            break
+        }
+    }
+}

@@ -1,7 +1,7 @@
 /* Modal */
 
 
-/* Modal_Producto */
+/* Modal_Pantalla */
 
 .modal_div {
     display: none;
@@ -15,6 +15,9 @@
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 }
+
+
+/* Modal_Producto */
 
 .modal-content {
     left: 25%;
@@ -71,12 +74,11 @@
 }
 
 .detalle_modal_und {
-    color: #ddd;
+    color: rgb(131, 131, 131);
     font-size: 100%;
     font-family: 'Work Sans';
     width: 100%;
     word-wrap: break-word;
-    font-weight: bold;
     line-height: 100%;
 }
 
@@ -131,7 +133,7 @@
 .modal-content-cuenta {
     left: 72.5%;
     top: 10%;
-    display: flex;
+    display: none;
     position: fixed;
     background-color: #fefefe;
     margin: auto;
@@ -139,7 +141,7 @@
     z-index: 2;
     padding: 1%;
     border-style: none;
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .modal_contenido_div {
@@ -148,6 +150,43 @@
     margin: 1%;
     border-style: none;
     padding: 1%;
+}
+
+
+/* Modal carito */
+
+.modal-content-carito {
+    left: 35%;
+    top: 10%;
+    display: none;
+    position: fixed;
+    background-color: #fefefe;
+    margin: auto;
+    width: 30%;
+    z-index: 2;
+    padding: 1%;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.carrito_detalle {
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.botones_carrito {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 3%;
+    width: 75%;
+    text-align: center;
+    background-color: #5ccb5f;
+    color: white;
+    border-style: none;
+    border-radius: 20px;
+    font-family: 'Work Sans';
 }
 
 
@@ -168,7 +207,7 @@ hr {
 }
 
 .logo {
-    width: 100%;
+    width: 70%;
     height: 8vh;
     border-radius: 20px;
     margin-left: 3%;
