@@ -1,0 +1,62 @@
+.principal{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    padding: 1%;
+    width: 50%;
+    background-color: white;
+    position:relative;
+    overflow-y: auto;
+    font-family:  'Open Sans';
+}
+
+.input_tex{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5%;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    display: block;
+    border-style: none;
+    border-width: 0ch;
+    margin-top: 2%;
+    margin-bottom: 1.5%;
+    width: 50%;
+    font-family:  'Open Sans';
+}
+
+.botones-registro{
+    border-radius: 20px;
+    padding: 1%;
+    text-align: center;
+    border-style: none;
+    border-width: 0ch;
+    color: white;
+    font-weight: bold;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    width: 50%;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    font-family:  'Open Sans';
+}
+
+.texto_ingreso{
+    display: block;
+    width: 50%;
+    margin: 3.5%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family:  'Open Sans';
+    font-size: medium;
+}
+
+.links{
+    display:block;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    font-family:  'Open Sans';
+    text-align: center;
+}
