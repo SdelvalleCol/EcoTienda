@@ -11,7 +11,7 @@ app.use(express.static('img'));
 app.use(express.static('css'));
 app.use(express.static('js'));
 
-
+//RUTAS 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/html/main.html'))
 });
@@ -24,17 +24,25 @@ app.get('/usuario/register', (req, res) => {
     res.sendFile(path.join(__dirname + '/html/registro.html'))
 });
 
+
+//APIS
+
+app.get('/api/busqueda/:correo',(req,res)=>{
+    var correo = req.params.correo
+    pool.query(`SELECT * FROM personas where correo = '${correo}' `, async (error, resultss) =>{
+        res.json(resultss)
+    })
+})
+
 app.get('/api', (req, res) => {
-    data = pool.query(`SELECT * FROM personas `, async (error, results) =>{
-        console.log(typeof(results))
+    pool.query(`SELECT * FROM personas `, async (error, results) =>{
         res.json(results)
     })
-    
 });
 
 app.post('/api/ingresar/:nombre/:apellido/:correo/:contrasena',(req,res)=>{
     let p = req.params
-    data = pool.query(`insert into personas(correo,contrasena,nombre,apellido) values ('${p.correo}','${p.contrasena}','${p.nombre}','${p.apellido}')`, async (error, results) =>{
+    pool.query(`insert into personas(correo,contrasena,nombre,apellido) values ('${p.correo}','${p.contrasena}','${p.nombre}','${p.apellido}')`, async (error, results) =>{
         if(error){
             console.log(error)
             res.status(204).end()

@@ -5,9 +5,14 @@
     padding: 1%;
     width: 50%;
     background-color: white;
-    position:relative;
     overflow-y: auto;
     font-family:  'Open Sans';
+}
+
+.alerta_div{
+    padding: 1.5%;
+    display: none;
+    border-color: red;
 }
 
 .input_tex{
@@ -60,3 +65,4 @@
     font-family:  'Open Sans';
     text-align: center;
 }
+

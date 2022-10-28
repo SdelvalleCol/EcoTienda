@@ -13,15 +13,17 @@
 </head>
 
 <body style="background-color: whitesmoke;">
+    <div id="alerta" class="principal alerta_div">
+            
+    </div>
     <div class="principal">
         <p class="texto_ingreso">Ingresar</p>
-        <input type="text" class="input_tex" placeholder="Email">
-        <input type="password" class="input_tex" placeholder="Password">
-        <a href="" class="links">¿Has olvidado la contraseña?</a>
-        <a href="" class="links">¿No tiene cuenta? Registrate</a>
-        <button class="botones-registro" style="background-color: #5ccb5f;">Accede</button>
+        <input id="correo_l" type="text" class="input_tex" placeholder="Email">
+        <input id="password_l" type="password" class="input_tex" placeholder="Password">
+        <button id="Acceder" class="botones-registro" style="background-color: #5ccb5f;">Accede</button>
         <button class="botones-registro" style="background-color: rgb(76, 76, 190);">Accede con facebook</button>
+        <a href="/usuario/register" class="links">¿No tiene cuenta? Registrate</a>
     </div>
 </body>
-
+<script src="/login.js"></script>
 </html>

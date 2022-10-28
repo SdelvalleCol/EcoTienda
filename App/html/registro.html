@@ -10,17 +10,22 @@
     <title>Registro</title>
 </head>
 <body style="background-color: whitesmoke;">
+    <div id="alerta" class="principal alerta_div">
+            
+    </div>
     <div class="principal">
         <p class="texto_ingreso">Crear nueva cuenta</p>
-        <input type="text" class="input_tex" placeholder="Nombre">
-        <input type="text" class="input_tex" placeholder="Apellido">
+        <input id="nombre" type="text" class="input_tex" placeholder="Nombre">
+        <input id="apellido" type="text" class="input_tex" placeholder="Apellido">
         <p class="texto_ingreso">Información de inicio de sesión</p>
-        <input type="text" class="input_tex" placeholder="Email">
-        <input type="text" class="input_tex" placeholder="Contraseña">
-        <input type="text" class="input_tex" placeholder="Repetir contraseña">
-        <button class="botones-registro" style="background-color: #5ccb5f;">Crear cuenta</button>
+        <input id="correo" type="email" class="input_tex" placeholder="Email">
+        <input id="contrasena" type="password" class="input_tex" placeholder="Contraseña">
+        <input id="repcontrasena" type="password" class="input_tex" placeholder="Repetir contraseña">
+        <button id="btn-cta" class="botones-registro" style="background-color: #5ccb5f;">Crear cuenta</button>
         <button class="botones-registro" style="background-color:rgb(76, 76, 190) ;">Acceder con facebook</button>
+        <br>
+        <a href="/usuario/login"> ¿Ya esta registrado? Inicie sesión</a>
     </div>
 </body>
-<script src="registro.js"></script>
+<script src="/registro.js"></script>
 </html>
