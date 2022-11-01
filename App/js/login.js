@@ -11,6 +11,7 @@ document.getElementById("Acceder").addEventListener("click", (e) => {
                 if (data.length == 1) {
                     if (data[0]["contrasena"] == contrasena_local) {
                         console.log("Sesion iniciada")
+                        sessionStorage.setItem("correo",correo)
                         correo = document.getElementById("correo_l").value = ""
                         contrasena_local = document.getElementById("password_l").value = ""
                     } else {
@@ -75,3 +76,18 @@ document.getElementById("Acceder").addEventListener("click", (e) => {
     }
 
 })
+
+function issession(){
+    var plantilla_nosesion = document.getElementById("nosesion")
+    var plantilla_sesion = document.getElementById("inicio-sesion")
+    if(sessionStorage.length == 0){
+        plantilla_nosesion.style.display = "block"
+        plantilla_sesion.style.display = "none"
+    }else{
+        plantilla_nosesion.style.display = "none"
+        plantilla_sesion.innerHTML = `Ya esta logueado en el sistema ${sessionStorage.getItem("correo")}`
+        plantilla_sesion.style.display = "block"
+    }
+}
+
+issession()

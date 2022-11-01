@@ -218,13 +218,17 @@ hr {
     padding: 1%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: -1.5%;
 }
 
 .logo {
-    width: 70%;
+    width: 75%;
     height: 8vh;
     border-radius: 20px;
     margin-left: 3%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .input_nav {
@@ -248,7 +252,6 @@ hr {
     padding: 1%;
     color: rgb(170, 167, 167);
     font-size: 110%;
-    display: inline-block;
     margin-top: 1%;
 }
 

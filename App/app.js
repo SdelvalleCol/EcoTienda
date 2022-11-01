@@ -1,15 +1,19 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const pool_mongo = require('./db/db.mong')
 const pool = require('./db/db');
 
+//Puertos
 app.listen(3000, () => {
     console.log("Server ONLIVE");
 });
 
+//Archivos estaticos
 app.use(express.static('img'));
 app.use(express.static('css'));
 app.use(express.static('js'));
+
 
 //RUTAS 
 app.get('/', (req, res) => {
@@ -26,6 +30,11 @@ app.get('/usuario/register', (req, res) => {
 
 
 //APIS
+
+app.get('/api/busquedanosql', async (req, res) => {
+    const result = await pool_mongo.find()
+    res.json(result)
+});
 
 app.get('/api/busqueda/:correo',(req,res)=>{
     var correo = req.params.correo
