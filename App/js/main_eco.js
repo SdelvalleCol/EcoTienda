@@ -1,9 +1,119 @@
+//almacenamiento
+var data_productos = []
+
 //funciones
 function borrarsession() {
     sessionStorage.clear()
     var plantilla = document.getElementById("cuenta_modal_acc")
     plantilla.style.display = "none"
 }
+
+async function main() {
+    data_productos = []
+    await fetch("http://localhost:3000/api/busqueda/nosql/productos").then(response => response.json())
+        .then(data => {
+            for (var i in data) {
+                data_productos.push(data[i])
+            }
+            pintar(data_productos,0,12)
+            pintar_paginacion()
+        })
+}
+
+function pintar(data, indice,indice_maximo) {
+    var plantilla = document.getElementById("plantilla_productos")
+    plantilla.innerHTML = ""
+    for (var i = indice; i < indice_maximo; i++) {
+        if (data[i]["discount"] == true) {
+            plantilla.innerHTML += `<div class="col-3 principal">
+        <div class="circulo">
+            <div class="promo_cir">
+                ${data[i]["discVal"]}%
+            </div>
+        </div>
+
+        <div class="corazon-producto-org">
+            <button class="nobtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-heart" viewBox="0 0 16 16">
+                    <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg>
+            </button>
+
+        </div>
+        <div>
+            <img src="${data[i]["img"]}" alt="" class="img-producto">
+        </div>
+        <div class="texto_producto_org" style="font-weight: bolder; margin-bottom: 3%;">
+            ${data[i]["name"]}
+        </div>
+        <div class="texto_producto_org" style="font-size: small; color: gray; width: 30%;">
+            ${data[i]["quantity"]}
+        </div>
+        <div class="texto_producto_org"
+            style="font-size:medium ; color: rgb(100, 98, 98); margin-top:-3% ; margin-bottom: 3%;">
+            ${data[i]["quantity"]}
+        </div>
+        <div class="texto_producto_org" style="font-size: x-large; color: #5ccb5f;">
+            $ ${data[i]["price"]}
+        </div>
+        <button class="botones_orange">
+            <svg style="margin-right: 5%;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                <path
+                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+            </svg>Añadir a la cesta
+        </button>
+    </div>`
+        } else {
+            plantilla.innerHTML += `<div class="col-3 principal">
+            <div class="corazon-producto-org">
+                <button class="nobtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-heart" viewBox="0 0 16 16">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                </button>
+    
+            </div>
+            <div>
+                <img src="${data[i]["img"]}" alt="" class="img-producto">
+            </div>
+            <div class="texto_producto_org" style="font-weight: bolder; margin-bottom: 3%;">
+                ${data[i]["name"]}
+            </div>
+            <div class="texto_producto_org" style="font-size: small; color: gray; width: 30%;">
+                ${data[i]["quantity"]}
+            </div>
+            <div class="texto_producto_org"
+                style="font-size:medium ; color: rgb(100, 98, 98); margin-top:-3% ; margin-bottom: 3%;">
+                ${data[i]["quantity"]}
+            </div>
+            <div class="texto_producto_org" style="font-size: x-large; color: #5ccb5f;">
+                $ ${data[i]["price"]}
+            </div>
+            <button class="botones_orange">
+                <svg style="margin-right: 5%;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                </svg>Añadir a la cesta
+            </button>
+        </div>`
+        }
+    }
+}
+
+function pintar_paginacion(){
+    var plantilla_paginacion = document.getElementById("paginacion_bor") 
+    var cantidad = Math.ceil(data_productos.length/12)
+    for(var i =0 ; i < cantidad ;  i++){
+        plantilla_paginacion.innerHTML += `<button>${i+1}</button>`
+    }
+}
+
 //eventos
 document.getElementById("btn_abrir_cta").addEventListener("click", (e) => {
     var plantilla = document.getElementById("cuenta_modal_acc")
@@ -55,3 +165,5 @@ document.getElementById("btn_abrir_cta").addEventListener("click", (e) => {
         plantilla.style.display = "flex"
     }
 })
+
+main()

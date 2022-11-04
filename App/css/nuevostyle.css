@@ -1,0 +1,155 @@
+.columnas {
+    margin-left: 3%;
+    display: block;
+    padding: 1%;
+}
+
+.recuadro {
+    font-family: 'Work Sans';
+    border-radius: 5px;
+    border-color: rgb(180, 180, 180);
+    border-style: solid;
+    border-width:thin;
+    width: 100%;
+    padding: 5%;
+}
+
+.rango{
+    width: 100%;
+    color: #5ccb5f;
+    background-color: #5ccb5f;
+    margin-bottom: 10%;
+}
+
+.input_rango_filtro{
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -5%;
+    background-color: whitesmoke;
+    border-style: none;
+    height: 5vh;
+}
+
+.botones_green{
+    display: block;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-color: #5ccb5f;
+    margin-top: 10%;
+    border-style: none;
+    width: 100%;
+    padding: 5%;
+}
+
+.corazon-producto-org{
+    position: relative;
+    float: right;
+    margin-top: 5%;
+    display: none;
+}
+
+.nobtn{
+    border-style: none;
+    background-color: white;
+}
+
+.img-producto{
+    width: 100%;
+    height: 50%; 
+    margin-bottom: -5%;
+}
+
+.texto_producto_org{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    text-align: center;
+    font-size: x-large;
+    font-family: 'Work Sans';
+    word-break: break-all;
+    padding: 1%;
+    line-height : 20px;
+}
+
+.principal{
+    margin-bottom: 1%;
+    position: relative;
+}
+
+.botones_orange{
+    display: block;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    margin-top: 10%;
+    border-style: none;
+    padding: 5%;
+    background-color: orange;  
+    width: 80%; 
+    display: none;
+    margin-bottom: 10%;
+}
+
+.circulo {
+    margin-top: 1.5%;
+    margin-left:1.5%;
+    width: 18%;
+    height: 12%;
+    border-radius: 50%;
+    background: #e80729;
+    position: absolute;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5%;
+  }
+  
+  .pagination button {
+    color:#5ccb5f;
+    border-style: solid;
+    border-color: rgb(143, 141, 141);
+    background-color: white;
+    padding: 0.5%;
+    width: 3.5%;
+    margin: 0.5%;
+  }
+
+.principal:hover{
+    box-shadow: 0px 0px 5px 0px rgba(199, 189, 199, 1);
+}
+
+.nobtn:hover{
+    color: #e80729;
+}
+
+.principal:hover>.corazon-producto-org{
+    display: flex;
+}
+
+.principal:hover>.botones_orange {
+    display: block;
+}
+
+.botones_orange:hover{
+    background-color: #5ccb5f;
+}
+
+.botones_green:hover{
+    background-color: orange;
+}
+
+
+

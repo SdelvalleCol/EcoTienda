@@ -31,11 +31,19 @@ app.get('/usuario/register', (req, res) => {
 
 //APIS
 
-app.get('/api/busquedanosql', async (req, res) => {
+//NOSQL
+app.get('/api/busqueda/nosql/productos', async (req, res) => {
     const result = await pool_mongo.find()
     res.json(result)
 });
 
+app.get('/api/busqueda/nosql/:id', async (req, res) => {
+    var id = req.params.id
+    const result = await pool_mongo.find({"id":id})
+    res.json(result)
+});
+
+//SQL
 app.get('/api/busqueda/:correo',(req,res)=>{
     var correo = req.params.correo
     pool.query(`SELECT * FROM personas where correo = '${correo}' `, async (error, resultss) =>{
