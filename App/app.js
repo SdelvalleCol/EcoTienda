@@ -128,6 +128,11 @@ app.post('/api/borrar/favoritos/:id/:correo',(req,res)=>{
     })
 })
 
+app.post('/api/agregar/productos/:id/:nombre/:costo:/:cantidad/:correo/:pedido',(req,res)=>{
+    let p = req.params
+    pool.query
+})
+
 app.get('*',(req,res)=>{
     res.send("error 404")
 })

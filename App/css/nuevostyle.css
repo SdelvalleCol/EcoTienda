@@ -65,6 +65,11 @@
     margin-bottom: -5%;
 }
 
+.img-producto-detalle{
+    width: 100%;
+    height: 100%; 
+}
+
 .img-producto-fav{
     width: 100%;
     height: 100%; 
@@ -91,6 +96,15 @@
     line-height : 20px;
 }
 
+.texto_producto_detalles{
+    font-size: large; 
+    font-weight: bold; 
+    text-align: left;
+    font-family: 'Work Sans';
+    word-break: break-all;
+    line-height : 20px;
+}
+
 .principal{
     margin-bottom: 1%;
     position: relative;
@@ -109,6 +123,31 @@
     width: 80%; 
     display: none;
     margin-bottom: 10%;
+}
+
+.botones_orange_detalle{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+    display: flex;
+    border-radius: 20px;
+    color: white;
+    border-style: none;
+    padding: 3%;
+    background-color: orange;  
+    width: 70%; 
+    float: right;
+}
+
+.inputcantidad{
+    margin-top: 3%;
+    text-align: center;
+    display: flex;
+    float: left;
+    color: black;
+    padding: 3%; 
+    width: 70%; 
 }
 
 .circulo {
@@ -162,6 +201,10 @@
     box-shadow: 0px 0px 5px 0px rgba(199, 189, 199, 1);
 }
 
+.botones_orange_detalle:hover{
+    background-color: #5ccb5f;
+}
+
 .nobtn:hover{
     color: #e80729;
 }
@@ -190,4 +233,66 @@
     color: white;
 }
 
+.descripcion_detalle_pi{
+    display: flex;
+    font-family: 'Work Sans';
+    word-break: break-all;
+    font-size: small;
+    color: rgb(153, 151, 151);
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+}
+.contenido_detalle_producto{
+    display: block;
+    font-family: 'Work Sans';
+    word-break: break-all;
+    font-size: medium;
+    color: black;
+    padding: 1.5%;
+}
 
+.carrito-full-detalles-v2{
+    background-color: whitesmoke ;
+    padding: 1.5%;
+}
+
+.titurlo_carrito_full_v2{
+    font-family: 'Work Sans';
+    word-break: break-all;
+    font-size: large;
+    color: black;
+}
+
+.descripcion_detalle_carrito_modal{
+    font-family: 'Work Sans';
+    word-break: break-all;
+    font-size:x-small;
+    color: rgb(153, 151, 151);
+    margin-top: -1%;
+}
+
+.input_carrito_detalle{
+    width: 80%;
+    color: #5ccb5f;
+}
+
+.conteniod_detalle_car{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.input_precio_Carrito{
+    color: #5ccb5f;
+    font-family: 'Work Sans';
+    word-break: break-all;
+    font-size:medium;
+
+}
+
+.contenido_carrito_full_v1{
+    display: block;
+    height:50vh;
+    overflow-y: auto;
+    margin-bottom: 1.5%;
+}

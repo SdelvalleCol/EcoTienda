@@ -56,39 +56,39 @@ async function filtro() {
     }
 }
 
-async function filtrar_precios_precio(){
+async function filtrar_precios_precio() {
     const collection = document.getElementsByClassName("input_rango_filtro");
-    if(collection[0].value != "" && collection[1].value != "" ){
+    if (collection[0].value != "" && collection[1].value != "") {
         await fetch(`http://localhost:3000/api/busqueda/nosql/productos/filtro/precio/${collection[1].value}/${collection[1].value}`)
-        .then(res => res.json()).then(data => {
-            if (data.length == 0) {
-                plantilla_alertas_header.innerHTML = `No encontramos ningún producto en ese rango de precios`
-                plantilla_alertas_header.style.display = "flex"
-                setTimeout(() => {
-                    plantilla_alertas_header.style.display = "none"
-                }, 2000);
-                collection[0].value = "" 
-                collection[1].value = ""
-            } else {
-                data_productos = []
-                for (var i in data) {
-                    data_productos.push(data[i])
-                }
-                if (data_productos.length <= 12) {
-                    pintar(data_productos, 0, data_productos.length)
+            .then(res => res.json()).then(data => {
+                if (data.length == 0) {
+                    plantilla_alertas_header.innerHTML = `No encontramos ningún producto en ese rango de precios`
+                    plantilla_alertas_header.style.display = "flex"
+                    setTimeout(() => {
+                        plantilla_alertas_header.style.display = "none"
+                    }, 2000);
+                    collection[0].value = ""
+                    collection[1].value = ""
                 } else {
-                    pintar(data_productos, 0, 12)
+                    data_productos = []
+                    for (var i in data) {
+                        data_productos.push(data[i])
+                    }
+                    if (data_productos.length <= 12) {
+                        pintar(data_productos, 0, data_productos.length)
+                    } else {
+                        pintar(data_productos, 0, 12)
+                    }
+                    pintar_paginacion()
+                    collection[0].value = ""
+                    collection[1].value = ""
                 }
-                pintar_paginacion()
-                collection[0].value = "" 
-                collection[1].value = ""
-            }
-        }).catch(e => {
-            if(e){
-                console.log(e)
-            }
-        })
-    }else{
+            }).catch(e => {
+                if (e) {
+                    console.log(e)
+                }
+            })
+    } else {
         plantilla_alertas_header.innerHTML = `Tiene que digitar un mínimo y un máximo`
         plantilla_alertas_header.style.display = "flex"
         setTimeout(() => {
@@ -194,6 +194,66 @@ function pintar_paginacion() {
     }
 }
 
+//Ver detalle producto
+async function detallesproducto(id) {
+    var plantilla = document.getElementById("detalles_producto")
+    var plantilla_cuerpo = document.getElementById("modal_cuerpo_detalle")
+    await fetch(`http://localhost:3000/api/busqueda/nosql/${id}`).then(res => res.json()).then(data => {
+        plantilla_cuerpo.innerHTML = `<div class="col-5">
+        <img src="${data[0]["img"]}" class="img-producto-detalle" alt="">
+    </div>
+    <div class="col-7" style="padding: 3%;">
+        <div class="row">
+            <div class="col-8">
+                <p class="texto_producto_detalles">${data[0]["name"]}</p>
+                <p class="descripcion_detalle_pi">${data[0]["quantity"]}</p>
+                <p class="descripcion_detalle_pi" style="color:#5ccb5f ; font-size:x-large">$ ${data[0]["price"]}</p>
+            </div>
+            <div class="col-4">
+                <button onclick="fav(${data[0]["id"]})" class="nobtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-heart" viewBox="0 0 16 16">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="contenido_detalle_producto">
+            ${data[0]["description"]}
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <input class="inputcantidad" type="number" name="" id="">
+            </div>
+            <div class="col-8">
+                <button onclick="anadir_canasta(${data[0]["id"]})" class="botones_orange_detalle">
+                    <svg style="margin-right: 5%;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket3" viewBox="0 0 16 16">
+                        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM3.394 15l-1.48-6h-.97l1.525 6.426a.75.75 0 0 0 .729.574h9.606a.75.75 0 0 0 .73-.574L15.056 9h-.972l-1.479 6h-9.21z"/>
+                      </svg>Añadir a la canasta
+                </button>
+            </div>
+        </div>
+    </div>`
+    plantilla.style.display = "block"
+    }).catch(e => {
+        if (e) {
+            console.log(e)
+        }
+    })
+}
+
+//Canasta
+async function anadir_canasta(id){
+    await fetch(`http://localhost:3000/api/busqueda/nosql/${id}`).then(res => res.json())
+    .then(data => {
+        
+    }).catch(e=>{
+        if(e){
+            console.log(e)
+        }
+    })
+}
 
 //Imprimir
 function pintar(data, indice, indice_maximo) {
@@ -234,7 +294,7 @@ function pintar(data, indice, indice_maximo) {
         <div class="texto_producto_org" style="font-size: x-large; color: #5ccb5f;">
             $ ${data[i]["price"]}
         </div>
-        <button class="botones_orange">
+        <button onclick = "detallesproducto(${data[i]["id"]})" class="botones_orange">
             <svg style="margin-right: 5%;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                 fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                 <path
@@ -270,7 +330,7 @@ function pintar(data, indice, indice_maximo) {
             <div class="texto_producto_org" style="font-size: x-large; color: #5ccb5f;">
                 $ ${data[i]["price"]}
             </div>
-            <button class="botones_orange">
+            <button onclick="detallesproducto(${data[i]["id"]})" class="botones_orange">
                 <svg style="margin-right: 5%;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                     fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                     <path

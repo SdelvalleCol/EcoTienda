@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
         name: String,
         quantity: String,
         price: Number,
-        description: Number,
+        description: String,
         discount: Boolean,
         discVal: Number ,
         discQuant:String
