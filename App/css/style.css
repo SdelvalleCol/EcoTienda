@@ -222,16 +222,12 @@ hr {
 }
 
 .logo {
-    display: block;
-    margin-top: auto;
-    margin-bottom: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 8vh;
-    border-radius: 20px;
-    margin-left: 3%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    height: 100%;
+    border-radius: 20px;   
 }
 
 .input_nav {

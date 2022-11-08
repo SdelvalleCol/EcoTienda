@@ -37,11 +37,24 @@ app.get('/api/busqueda/nosql/productos', async (req, res) => {
     res.json(result)
 });
 
+app.get('/api/busqueda/nosql/productos/filtro/:nombre', async (req, res) => {
+    var nombre = req.params.nombre
+    const result = await pool_mongo.find({"name": new RegExp(nombre,'i')})
+    res.json(result)
+});
+
+app.get('/api/busqueda/nosql/productos/filtro/precio/:min/:max', async (req, res) => {
+    var p = req.params
+    const result = await pool_mongo.find({"price":{$gt:p.min} , "price":{$lt:p.max}})
+    res.json(result)
+});
+
 app.get('/api/busqueda/nosql/:id', async (req, res) => {
     var id = req.params.id
     const result = await pool_mongo.find({"id":id})
     res.json(result)
 });
+
 
 //SQL
 app.get('/api/busqueda/:correo',(req,res)=>{

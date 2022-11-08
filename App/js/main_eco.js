@@ -19,6 +19,84 @@ async function main() {
         }).catch(e => console.log(e))
 }
 
+//BUSQUEDA 
+async function filtro() {
+    var str = document.getElementById("busqueda_str").value
+    if (str.length >= 1) {
+        await fetch(`http://localhost:3000/api/busqueda/nosql/productos/filtro/${str}`).then(response => response.json())
+            .then(data => {
+                if (data.length == 0) {
+                    plantilla_alertas_header.innerHTML = `No encontramos ningún producto con esas caracteristicas`
+                    plantilla_alertas_header.style.display = "flex"
+                    setTimeout(() => {
+                        plantilla_alertas_header.style.display = "none"
+                    }, 2000);
+                    document.getElementById("busqueda_str").value = ""
+                } else {
+                    data_productos = []
+                    for (var i in data) {
+                        data_productos.push(data[i])
+                    }
+                    if (data_productos.length <= 12) {
+                        pintar(data_productos, 0, data_productos.length)
+                    } else {
+                        pintar(data_productos, 0, 12)
+                    }
+                    pintar_paginacion()
+                    document.getElementById("busqueda_str").value = ""
+                }
+            }).catch(e => console.log(e))
+    } else {
+        plantilla_alertas_header.innerHTML = `Digite algo para buscar`
+        plantilla_alertas_header.style.display = "flex"
+        setTimeout(() => {
+            plantilla_alertas_header.style.display = "none"
+        }, 3000);
+        sessionStorage.clear()
+    }
+}
+
+async function filtrar_precios_precio(){
+    const collection = document.getElementsByClassName("input_rango_filtro");
+    if(collection[0].value != "" && collection[1].value != "" ){
+        await fetch(`http://localhost:3000/api/busqueda/nosql/productos/filtro/precio/${collection[1].value}/${collection[1].value}`)
+        .then(res => res.json()).then(data => {
+            if (data.length == 0) {
+                plantilla_alertas_header.innerHTML = `No encontramos ningún producto en ese rango de precios`
+                plantilla_alertas_header.style.display = "flex"
+                setTimeout(() => {
+                    plantilla_alertas_header.style.display = "none"
+                }, 2000);
+                collection[0].value = "" 
+                collection[1].value = ""
+            } else {
+                data_productos = []
+                for (var i in data) {
+                    data_productos.push(data[i])
+                }
+                if (data_productos.length <= 12) {
+                    pintar(data_productos, 0, data_productos.length)
+                } else {
+                    pintar(data_productos, 0, 12)
+                }
+                pintar_paginacion()
+                collection[0].value = "" 
+                collection[1].value = ""
+            }
+        }).catch(e => {
+            if(e){
+                console.log(e)
+            }
+        })
+    }else{
+        plantilla_alertas_header.innerHTML = `Tiene que digitar un mínimo y un máximo`
+        plantilla_alertas_header.style.display = "flex"
+        setTimeout(() => {
+            plantilla_alertas_header.style.display = "none"
+        }, 2000);
+    }
+}
+
 //GESTIONAR CUENTA
 function borrarsession() {
     var plantilla = document.getElementById("cuenta_modal_acc")
@@ -98,15 +176,18 @@ async function fav(id) {
 //Paginacion
 function paginacion_scroll(indice) {
     var indice_final = (indice) * 12
-    if (data_productos.length < 12) {
-        pintar(data_productos, indice_final, 0, 12)
-    } else {
-        pintar(data_productos, indice_final - 12, indice_final)
+    if (data_productos.length < indice_final) {
+        pintar(data_productos, (indice_final - 12), data_productos.length)
+    } else if (data_productos.length > indice_final) {
+        pintar(data_productos, (indice_final - 12), (indice_final))
     }
+
+
 }
 
 function pintar_paginacion() {
     var plantilla_paginacion = document.getElementById("paginacion_bor")
+    plantilla_paginacion.innerHTML = ""
     var cantidad = Math.ceil(data_productos.length / 12)
     for (var i = 0; i < cantidad; i++) {
         plantilla_paginacion.innerHTML += `<button onclick="paginacion_scroll(${i + 1})">${i + 1}</button>`

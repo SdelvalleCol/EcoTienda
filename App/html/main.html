@@ -61,15 +61,18 @@
     <!--navbar-->
     <nav class="navs">
         <div class="row">
-            <div class="col-1">
-                <img src="/logo.jpg" alt="" class="logo">
+            <div class="col-2">
+                <button onclick="main()" class="nobtn">
+                    <img src="/logo.jpg" alt="" class="logo">
+                </button>
+                
             </div>
 
-            <div class="col-8">
+            <div class="col-7">
                 <div class="busqueda"> <input id="busqueda_str" class="input_nav" type="text"
                         placeholder="¿Qué producto estás buscando...?">
                     <div class="icon_search">
-                        <button id="filtro_string" class="boton_bq">
+                        <button onclick="filtro()" id="filtro_string" class="boton_bq">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-search" viewBox="0 0 16 16">
                                 <path
@@ -129,26 +132,20 @@
                         </p>
                     </div>
                     <div class="col-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                            class="bi bi-x" viewBox="0 0 16 16">
-                            <path
-                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                        </svg>
+                        
                     </div>
                 </div>
-                <input type="range" name="" id="" class="rango">
-
                 <div class="row">
                     <div class="col-6">
                         <p>Desde</p>
-                        <input class="input_rango_filtro" type="text">
+                        <input class="input_rango_filtro" type="number">
                     </div>
                     <div class="col-6">
                         <p>De</p>
-                        <input class="input_rango_filtro" type="text">
+                        <input class="input_rango_filtro" type="number">
                     </div>
                 </div>
-                <button class="botones_green">
+                <button onclick="filtrar_precios_precio()" class="botones_green">
                     Filtrar
                 </button>
             </div>
