@@ -194,7 +194,8 @@ function pintar_paginacion() {
     }
 }
 
-//Ver detalle producto
+//CARRITO
+//Detalle producto
 async function detallesproducto(id) {
     var plantilla = document.getElementById("detalles_producto")
     var plantilla_cuerpo = document.getElementById("modal_cuerpo_detalle")
@@ -235,7 +236,7 @@ async function detallesproducto(id) {
             </div>
         </div>
     </div>`
-    plantilla.style.display = "block"
+        plantilla.style.display = "block"
     }).catch(e => {
         if (e) {
             console.log(e)
@@ -244,15 +245,92 @@ async function detallesproducto(id) {
 }
 
 //Canasta
-async function anadir_canasta(id){
-    await fetch(`http://localhost:3000/api/busqueda/nosql/${id}`).then(res => res.json())
-    .then(data => {
-        
-    }).catch(e=>{
-        if(e){
-            console.log(e)
-        }
-    })
+async function anadir_canasta(id) {
+    if (sessionStorage.length == 0) {
+        plantilla_alertas_header.innerHTML = "Por favor , inicie sesión"
+        plantilla_alertas_header.style.display = "flex"
+        setTimeout(() => {
+            plantilla_alertas_header.style.display = "none"
+        }, 2000);
+    } else {
+        await fetch(`http://localhost:3000/api/busqueda/nosql/${id}`).then(res => res.json())
+            .then(data => {
+                var correo = sessionStorage.getItem("correo")
+                var nombres = (data[0]["name"]).trim()
+                nombres = nombres.replace('%', "porciento")
+                console.log(nombres)
+                fetch(`http://localhost:3000/api/agregar/productos/'${data[0]["id"]}'/${nombres}/${data[0]["price"]}/1/${correo}`, { method: "POST" }).then(r => {
+                    plantilla_alertas_header.innerHTML = "Se agrego el producto a carritos"
+                    plantilla_alertas_header.style.display = "flex"
+                    setTimeout(() => {
+                        plantilla_alertas_header.style.display = "none"
+                    }, 2000);
+                    document.getElementById("detalles_producto").style.display = "none"
+                })
+            }).catch(e => {
+                if (e) {
+                    console.log(e)
+                }
+            })
+    }
+
+}
+
+//IMPRIMIR CARRITO
+async function ver_carrito() {
+    if (sessionStorage.length == 0) {
+        plantilla_alertas_header.innerHTML = "Función valida para usuarios"
+        plantilla_alertas_header.style.display = "flex"
+        setTimeout(() => {
+            plantilla_alertas_header.style.display = "none"
+        }, 2000);
+    } else {
+        var correo = sessionStorage.getItem("correo")
+        var plantilla = document.getElementById("contenido_carrito_full")
+        plantilla.innerHTML = ""
+        var plantilla_principal = document.getElementById("carrito_full")
+        await fetch(`http://localhost:3000/api/busqueda/productos/${correo}`).then(res => res.json())
+            .then(data => {
+                var precio = 0
+                for (var i = 0; i < data.length; i++) {
+                    fetch(`http://localhost:3000/api/busqueda/nosql/${data[i]["id_producto"]}`).then(r => r.json()).then(subdata=>{
+                        plantilla.innerHTML += `<div class="row">
+                        <div class="col-3">
+                            <img src="${subdata[0]["img"]}" alt="No se encontro" class="img-producto-detalle">
+                        </div>
+                        <div class="col-3">
+                            <p class="titurlo_carrito_full_v2">${subdata[0]["name"]}</p>
+                            <p class="descripcion_detalle_carrito_modal">${subdata[0]["quantity"]}</p>
+                        </div>
+                        <div class="col-2 conteniod_detalle_car">
+                            <input type="number" class="input_carrito_detalle" placeholder="Cantidad">
+                        </div>
+                        <div class="col-2 conteniod_detalle_car input_precio_Carrito">
+                            $ ${subdata[0]["price"]}
+                        </div>
+                        <div class="col-2 conteniod_detalle_car">
+                            <button class="nobtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash2" viewBox="0 0 16 16">
+                                    <path
+                                        d="M14 3a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2zM3.215 4.207l1.493 8.957a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836l1.493-8.957C11.69 4.689 9.954 5 8 5c-1.954 0-3.69-.311-4.785-.793z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>`
+                    })
+                    precio+=data[i]["costop"]
+                }
+                document.getElementById("subtotal_carrito").innerHTML = precio
+                document.getElementById("total_carrito").innerHTML = precio + (precio*0.19)
+                plantilla_principal.style.display="block"
+            })
+            .catch(e => {
+                if (e) {
+                    console.log(e)
+                }
+            })
+    }
 }
 
 //Imprimir
@@ -359,7 +437,7 @@ document.getElementById("btn_abrir_cta").addEventListener("click", (e) => {
             </svg>   Mis favoritos
         </button>
         <hr class="hr_style ">
-        <button class="modal_contenido_div">
+        <button onclick ="ver_carrito()" class="modal_contenido_div">
             <svg id="cta_carrito" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
             </svg>   Mi carrito

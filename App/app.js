@@ -92,6 +92,17 @@ app.get('/api/busqueda/favoritos/:correo',(req,res)=>{
     })
 })
 
+app.get('/api/busqueda/productos/:correo',(req,res)=>{
+    var p = req.params
+    pool.query(`SELECT * FROM productos , personas where correo = personas_correo AND correo = '${p.correo}'`,async(error,result)=>{
+        if(error){
+            console.log(error)
+        }else{
+            res.json(result)
+        }
+    })
+})
+
 app.post('/api/ingresar/:nombre/:apellido/:correo/:contrasena',(req,res)=>{
     let p = req.params
     pool.query(`insert into personas(correo,contrasena,nombre,apellido) values ('${p.correo}','${p.contrasena}','${p.nombre}','${p.apellido}')`, async (error, results) =>{
@@ -128,9 +139,16 @@ app.post('/api/borrar/favoritos/:id/:correo',(req,res)=>{
     })
 })
 
-app.post('/api/agregar/productos/:id/:nombre/:costo:/:cantidad/:correo/:pedido',(req,res)=>{
+app.post('/api/agregar/productos/:id/:nombre/:costo/:cantidad/:correo',(req,res)=>{
     let p = req.params
-    pool.query
+    pool.query(`INSERT INTO productos(nombrep,costop,cantidadp,personas_correo,id_producto) values ('${p.nombre}',${p.costo},${p.cantidad},'${p.correo}',${p.id}) `, async (error, results) =>{
+        if(error){
+            console.log(error)
+            res.status(204).end()
+        }else{
+            res.status(200).end()
+        }
+    })
 })
 
 app.get('*',(req,res)=>{

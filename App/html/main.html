@@ -52,7 +52,7 @@
     </div>
 
     <!--Carrito_FULL-->
-    <div id="carrito_full" style="display: block;" class="w3-modal">
+    <div id="carrito_full" class="w3-modal">
         <div class="w3-modal-content">
             <div class="w3-container">
                 <span onclick="document.getElementById('carrito_full').style.display='none'"
@@ -60,48 +60,24 @@
                 <p class="texto_producto_org" style="margin-top: 1%;">Esta es tu cesta de compra</p>
 
                 <div class="row">
-                    <div class="col-7 contenido_carrito_full_v1" id="contenido_carrito_full">
-                        <div class="row">
-                            <div class="col-3">
-                                <img src="/25.jpg" alt="No se encontro" class="img-producto-detalle">
-                            </div>
-                            <div class="col-3">
-                                <p class="titurlo_carrito_full_v2">Parche antiarruja</p>
-                                <p class="descripcion_detalle_carrito_modal">UND:80</p>
-                            </div>
-                            <div class="col-2 conteniod_detalle_car">
-                                <input type="number" class="input_carrito_detalle" placeholder="Cantidad">
-                            </div>
-                            <div class="col-2 conteniod_detalle_car input_precio_Carrito">
-                                $312312
-                            </div>
-                            <div class="col-2 conteniod_detalle_car">
-                                <button class="nobtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash2" viewBox="0 0 16 16">
-                                        <path d="M14 3a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2zM3.215 4.207l1.493 8.957a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836l1.493-8.957C11.69 4.689 9.954 5 8 5c-1.954 0-3.69-.311-4.785-.793z"/>
-                                      </svg>
-                                </button>
-                                
-                            </div>
-                            
-                        </div>
-
+                    <div class="col-9 contenido_carrito_full_v1" id="contenido_carrito_full">
+                        
                     </div>
-                    <div class="col-5 carrito-full-detalles-v2">
+                    <div class="col-3 carrito-full-detalles-v2">
                         <div class="row">
                             <p>Resumen total del pedido</p>
                             <div class="col-6">
                                 Subotal
                             </div>
-                            <div class="col-6">
-                                $ 21312
+                            <div id="subtotal_carrito" class="col-6">
+                                
                             </div>
-                            
+
                             <div class="col-6">
                                 Total
                             </div>
-                            <div class="col-6">
-                                $ 312131
+                            <div id="total_carrito" class="col-6">
+                                
                             </div>
                             <button class="botones_green" style="width: 50%;">Realizar pedido</button>
                         </div>
@@ -167,7 +143,7 @@
                         <p class="texto_nav_icon">Mi cuenta</p>
                     </div>
                     <div class="col-3">
-                        <button id="abrir_carrito" class="botones_nav_icon">
+                        <button onclick="ver_carrito()" id="abrir_carrito" class="botones_nav_icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-basket3" viewBox="0 0 16 16">
                                 <path
