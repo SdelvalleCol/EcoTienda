@@ -10,7 +10,7 @@ document.getElementById("Acceder").addEventListener("click", (e) => {
             .then(data => {
                 if (data.length == 1) {
                     if (data[0]["contrasena"] == contrasena_local) {
-                        console.log("Sesion iniciada")
+                        window.location.href = "http://localhost:3000/";
                         sessionStorage.setItem("correo",correo)
                         correo = document.getElementById("correo_l").value = ""
                         contrasena_local = document.getElementById("password_l").value = ""

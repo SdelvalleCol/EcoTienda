@@ -57,6 +57,28 @@ app.get('/api', (req, res) => {
     })
 });
 
+app.get('/api/busqueda/favoritos/:id/:correo',(req,res)=>{
+    var p = req.params
+    pool.query(`SELECT id_producto,correo FROM favoritos , personas where id_producto = ${p.id} AND correo = personas_correo AND correo = '${p.correo}'`,async(error,result)=>{
+        if(error){
+            console.log(error)
+        }else{
+            res.json(result)
+        }
+    })
+})
+
+app.get('/api/busqueda/favoritos/:correo',(req,res)=>{
+    var p = req.params
+    pool.query(`SELECT id_producto FROM favoritos , personas where correo = personas_correo AND correo = '${p.correo}'`,async(error,result)=>{
+        if(error){
+            console.log(error)
+        }else{
+            res.json(result)
+        }
+    })
+})
+
 app.post('/api/ingresar/:nombre/:apellido/:correo/:contrasena',(req,res)=>{
     let p = req.params
     pool.query(`insert into personas(correo,contrasena,nombre,apellido) values ('${p.correo}','${p.contrasena}','${p.nombre}','${p.apellido}')`, async (error, results) =>{
@@ -64,8 +86,31 @@ app.post('/api/ingresar/:nombre/:apellido/:correo/:contrasena',(req,res)=>{
             console.log(error)
             res.status(204).end()
         }else{
-            console.log("exito")
+            res.status(200).end()
+        }
+    })
+})
+
+app.post('/api/ingresarfav/:id/:correo',(req,res)=>{
+    let p = req.params
+    pool.query(`insert into favoritos(id_producto, personas_correo) VALUES ('${p.id}', '${p.correo}')`, async (error, results) =>{
+        if(error){
+            console.log(error)
             res.status(204).end()
+        }else{
+            res.status(200).end()
+        }
+    })
+})
+
+app.post('/api/borrar/favoritos/:id/:correo',(req,res)=>{
+    let p = req.params
+    pool.query(`DELETE from favoritos where id_producto = ${p.id} and personas_correo = '${p.correo}'`, async (error, results) =>{
+        if(error){
+            console.log(error)
+            res.status(204).end()
+        }else{
+            res.status(200).end()
         }
     })
 })

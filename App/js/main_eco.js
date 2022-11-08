@@ -1,13 +1,11 @@
+//alertas
+var plantilla_alertas_header = document.getElementById("alerta_modal")
 //almacenamiento
 var data_productos = []
 
-//funciones
-function borrarsession() {
-    sessionStorage.clear()
-    var plantilla = document.getElementById("cuenta_modal_acc")
-    plantilla.style.display = "none"
-}
+//FUNCIONES
 
+//FUNCION PRINCIPAL
 async function main() {
     data_productos = []
     await fetch("http://localhost:3000/api/busqueda/nosql/productos").then(response => response.json())
@@ -15,12 +13,109 @@ async function main() {
             for (var i in data) {
                 data_productos.push(data[i])
             }
-            pintar(data_productos,0,12)
+            pintar(data_productos, 0, 12)
             pintar_paginacion()
+            isloged()
+        }).catch(e => console.log(e))
+}
+
+//GESTIONAR CUENTA
+function borrarsession() {
+    var plantilla = document.getElementById("cuenta_modal_acc")
+    plantilla.style.display = "none"
+    plantilla_alertas_header.innerHTML = `Hasta pronto ${sessionStorage.getItem("correo")}`
+    plantilla_alertas_header.style.display = "flex"
+    setTimeout(() => {
+        plantilla_alertas_header.style.display = "none"
+    }, 3000);
+    sessionStorage.clear()
+}
+
+function isloged() {
+    if (sessionStorage.length > 0) {
+        plantilla_alertas_header.innerHTML = `Bienvenido ${sessionStorage.getItem("correo")}`
+        plantilla_alertas_header.style.display = "flex"
+        setTimeout(() => {
+            plantilla_alertas_header.style.display = "none"
+        }, 3000);
+    }
+}
+
+//FUNCIONES FAVORITOS
+async function nofavsql(id) {
+    correo = sessionStorage.getItem("correo")
+    await fetch(`http://localhost:3000/api/borrar/favoritos/${id}/${correo}`, { method: "POST" }).then(c => {
+        var plantilla = document.getElementById("fav_producto")
+        plantilla.style.display = "none"
+        plantilla_alertas_header.innerHTML = "Se ha quitado de favoritos el producto"
+        plantilla_alertas_header.style.display = "flex"
+        setTimeout(() => {
+            plantilla_alertas_header.style.display = "none"
+        }, 2000);
+    })
+        .catch(e => {
+            if (e) {
+                console.log(e)
+            }
         })
 }
 
-function pintar(data, indice,indice_maximo) {
+async function fav(id) {
+    if (sessionStorage.length != 0) {
+        for (var i = 0; i < data_productos.length; i++) {
+            if (data_productos[i]["id"] == id) {
+                var correo = sessionStorage.getItem("correo")
+                await fetch(`http://localhost:3000/api/busqueda/favoritos/${id}/${correo}`, { method: "GET" }).then(res => res.json())
+                    .then(data_fav => {
+                        if (data_fav.length == 0) {
+                            fetch(`http://localhost:3000/api/ingresarfav/${id}/${correo}`, { method: "POST" }).then(da => {
+                                plantilla_alertas_header.innerHTML = "Se ha agregado el producto a favoritos"
+                                plantilla_alertas_header.style.display = "flex"
+                                setTimeout(() => {
+                                    plantilla_alertas_header.style.display = "none"
+                                }, 2000);
+                            }).catch(e => console.log(e))
+                        } else {
+                            plantilla_alertas_header.innerHTML = "Ya lo tienes como favoritos"
+                            plantilla_alertas_header.style.display = "flex"
+                            setTimeout(() => {
+                                plantilla_alertas_header.style.display = "none"
+                            }, 2000);
+                        }
+                    })
+                break
+            }
+        }
+    } else {
+        plantilla_alertas_header.innerHTML = "Por favor , inicie sesión"
+        plantilla_alertas_header.style.display = "flex"
+        setTimeout(() => {
+            plantilla_alertas_header.style.display = "none"
+        }, 2000);
+    }
+}
+
+//Paginacion
+function paginacion_scroll(indice) {
+    var indice_final = (indice) * 12
+    if (data_productos.length < 12) {
+        pintar(data_productos, indice_final, 0, 12)
+    } else {
+        pintar(data_productos, indice_final - 12, indice_final)
+    }
+}
+
+function pintar_paginacion() {
+    var plantilla_paginacion = document.getElementById("paginacion_bor")
+    var cantidad = Math.ceil(data_productos.length / 12)
+    for (var i = 0; i < cantidad; i++) {
+        plantilla_paginacion.innerHTML += `<button onclick="paginacion_scroll(${i + 1})">${i + 1}</button>`
+    }
+}
+
+
+//Imprimir
+function pintar(data, indice, indice_maximo) {
     var plantilla = document.getElementById("plantilla_productos")
     plantilla.innerHTML = ""
     for (var i = indice; i < indice_maximo; i++) {
@@ -33,7 +128,7 @@ function pintar(data, indice,indice_maximo) {
         </div>
 
         <div class="corazon-producto-org">
-            <button class="nobtn">
+            <button onclick="fav(${data[i]["id"]})" class="nobtn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-heart" viewBox="0 0 16 16">
                     <path
@@ -69,7 +164,7 @@ function pintar(data, indice,indice_maximo) {
         } else {
             plantilla.innerHTML += `<div class="col-3 principal">
             <div class="corazon-producto-org">
-                <button class="nobtn">
+                <button onclick="fav(${data[i]["id"]})" class="nobtn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-heart" viewBox="0 0 16 16">
                         <path
@@ -103,14 +198,6 @@ function pintar(data, indice,indice_maximo) {
             </button>
         </div>`
         }
-    }
-}
-
-function pintar_paginacion(){
-    var plantilla_paginacion = document.getElementById("paginacion_bor") 
-    var cantidad = Math.ceil(data_productos.length/12)
-    for(var i =0 ; i < cantidad ;  i++){
-        plantilla_paginacion.innerHTML += `<button>${i+1}</button>`
     }
 }
 
@@ -163,6 +250,48 @@ document.getElementById("btn_abrir_cta").addEventListener("click", (e) => {
         plantilla.style.display = "none"
     } else {
         plantilla.style.display = "flex"
+    }
+})
+
+document.getElementById("abrir_fav").addEventListener("click", (e) => {
+    if (sessionStorage.length != 0) {
+        var plantilla = document.getElementById("fav_producto")
+        plantilla.style.display = "block"
+        var plantilla_cuerpo = document.getElementById("cuerpo_modal_fav")
+        plantilla_cuerpo.innerHTML = ""
+        var correo = sessionStorage.getItem("correo")
+        fetch(`http://localhost:3000/api/busqueda/favoritos/${correo}`).then(respon => respon.json())
+            .then(data => {
+                plantilla_cuerpo.innerHTML = `<p class="titulo_modal_fav">
+                Tus favoritos
+            </p>`
+                for (i in data) {
+                    fetch(`http://localhost:3000/api/busqueda/nosql/${data[i]["id_producto"]}`).then(rs => rs.json())
+                        .then(subdata => {
+                            plantilla_cuerpo.innerHTML += `<div class="row">
+                    <div class="col-4">
+                        <img src="${subdata[0]["img"]}" alt="" class="img-producto-fav">
+                    </div>
+                    <div class="col-5 contenido_favorito_txt">
+                            ${subdata[0]["name"]}
+                    </div>
+                    <div class="col-3 contenido_favorito_txt">
+                        <button onclick="nofavsql(${subdata[0]["id"]})" class="nobtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-trash2" viewBox="0 0 16 16">
+                                <path d="M14 3a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2zM3.215 4.207l1.493 8.957a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836l1.493-8.957C11.69 4.689 9.954 5 8 5c-1.954 0-3.69-.311-4.785-.793z"/>
+                              </svg>
+                        </button>
+                    </div>
+                </div>`
+                        })
+                }
+            })
+    } else {
+        plantilla_alertas_header.innerHTML = "Debes iniciar sesión"
+        plantilla_alertas_header.style.display = "flex"
+        setTimeout(() => {
+            plantilla_alertas_header.style.display = "none"
+        }, 2000);
     }
 })
 
