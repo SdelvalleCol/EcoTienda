@@ -1,0 +1,14 @@
+{
+	"name": "express-mysql",
+	"version": "0.0.1",
+	"author": "Ryan Clough <ryanc1256@gmail.com>",
+	"description": "mysql session store for Connect",	
+	"main": "./index.js",
+	"dependencies": {
+		"mysql": "latest"
+	},
+	"repository": { "type": "git", "url": "git@github.com:ryanc1256/connect-mysql.git" },
+	"bugs": {
+		"url": "https://github.com/Ryanc1256/connect-mysql/issues"
+	}
+}
